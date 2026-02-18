@@ -1,16 +1,14 @@
 import pandas as pd
-from sklearn.linear_model import LinearRegression
-from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import r2_score
+from sklearn.tree import DecisionTreeRegressor
 
 data = pd.read_csv("dataset.csv")
 X = data[["feature1", "feature2"]]
 y = data["target"]
 
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
+model = DecisionTreeRegressor(random_state=42)
+model.fit(X, y)
 
-model = LinearRegression()
-model.fit(X_scaled, y)
-
-accuracy = model.score(X_scaled, y)
+predictions = model.predict(X)
+accuracy = r2_score(y, predictions)
 print(f"R2 accuracy: {accuracy:.4f}")
