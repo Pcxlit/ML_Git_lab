@@ -3,7 +3,7 @@ from sklearn.metrics import r2_score
 from sklearn.tree import DecisionTreeRegressor
 
 data = pd.read_csv("dataset.csv")
-X = data[["feature1", "feature2"]]
+X = data[["feat1", "feat2"]]
 y = data["target"]
 
 model = DecisionTreeRegressor(random_state=42)
